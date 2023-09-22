@@ -37,7 +37,7 @@ for guess in range(1, 21):
     print("I must have been too low, right?", result)
 
 # Second strategy - starting at 20
-for i in range(20, 0, -1): # doesn't include 0
+for i in range(20, 0, -1):
     result = input_selection(
         "I'm guessing {}\nHow is my guess?".format(guess),
         ["low", "hit", "high"]
@@ -46,9 +46,7 @@ for i in range(20, 0, -1): # doesn't include 0
         print("Wuhuu!")
         break
 
-    print("I must have been too low, right?", result)
-
-# Third strategy - starting by guessing 10 and using the middle of the interval
+# Third strategy - using the middle of intervals
 upper_bound = 20
 lower_bound = 1
 for guess in range(lower_bound, upper_bound + 1):
@@ -59,8 +57,12 @@ for guess in range(lower_bound, upper_bound + 1):
     )
     if result == "low":
         lower_bound = guess + 1
+        continue
     if result == "high":
         upper_bound = guess - 1
+        continue
     if result == "hit":
         print("Wuhuu!")
         break
+
+
